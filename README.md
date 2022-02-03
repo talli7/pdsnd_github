@@ -35,5 +35,10 @@ new_york_city.csv
 washington.csv
 bikeshare.py
 
+### Fault Tolerant
+  The program was developed in such a way to cater any input fault. Users can enter the
+  city name in any case and the program will still work.
+
+
 ### Credits
 https://www.python.org/

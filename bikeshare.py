@@ -16,7 +16,7 @@ restarting = False
 
 def get_filters(restarting):
     """
-    Asks user to specify a city, month, and day to analyze.
+    Asking user to specify a city, month, and day to analyze.
 
     Returns:
         (str) city - name of the city to analyze
@@ -28,7 +28,7 @@ def get_filters(restarting):
     month=''
     day=''
     filter_type=''
-    
+
     print('Hello! Let\'s explore some US bikeshare data!')
     city=input('Will you like to see data for Chicago, New York City, or Washington? \n').lower()
     #filter_type=input('Will you like to filter the data by month, day, both, or not all? Type "none" for no time filter. \n')
@@ -52,7 +52,7 @@ def get_filters(restarting):
 
     correct=False
     i=0
-    
+
     while correct == False and restarting==False:
         i=i+1
         filter_type=input('Will you like to filter the data by month, day, both, or not all? Type "none" for no time filter. \n').title()
@@ -68,7 +68,7 @@ def get_filters(restarting):
         elif filter_type in filter_list.keys():
             correct = True
 
-            
+
     if filter_type == 'Month' and restarting==False:
         correct=False
         i=0
@@ -86,8 +86,8 @@ def get_filters(restarting):
             elif month_name in month_list.keys():
                 correct = True
 
-     
-    try:        
+
+    try:
         if filter_type == 'Day' and restarting==False:
             correct=False
             i=0
@@ -111,10 +111,10 @@ def get_filters(restarting):
         restarting=True
         print ('Wrong Data entered Restarting the program. Please type your response as an integer (e.g. 1=Sunday) \n')
 
-                
-                
-                
-    try:            
+
+
+
+    try:
         if filter_type == 'Both' and restarting==False:
             correct=False
             i=0
@@ -135,7 +135,7 @@ def get_filters(restarting):
                     correct = True
 
 
-            if filter_type == 'Both' and restarting==False:        
+            if filter_type == 'Both' and restarting==False:
                 correct=False
                 i=0
                 month_name=input('Which month January, February, March, April, May, or June? \n').title()
@@ -156,9 +156,9 @@ def get_filters(restarting):
 
         restarting=True
         print ('Wrong Data entered Restarting the program. Please type your response as an integer (e.g. 1=Sunday) \n')
-    
+
     if filter_type == 'none' and restarting==False:
-       print('Filter Type none selected')     
+       print('Filter Type none selected')
 
 
     return city, month, day,filter_type,restarting
@@ -194,7 +194,7 @@ def load_data(city, month, day,filter_type):
 
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
-        
+
         # filter by day of week if applicable
     elif filter_type == 'day':
         # use the index of the months list to get the corresponding int
@@ -207,11 +207,11 @@ def load_data(city, month, day,filter_type):
         df = df[df['month'] == month]
         df = df[df['day_of_week'] == day]
         # filter by day of week if applicable
-        
+
     elif filter_type == 'none':
         # filter by day of week to create the new dataframe
         df = df
-       
+
     return df
 
 
@@ -310,7 +310,7 @@ def trip_duration_stats(df,filter_type):
     start_time = time.time()
 
     # display total travel time
- 
+
     sum_duration = df['Trip Duration'].sum()
     average_duration = df['Trip Duration'].mean()
     count_duration = df['Trip Duration'].count()
@@ -320,7 +320,7 @@ def trip_duration_stats(df,filter_type):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*60)
 
-    
+
 def user_stats(df,filter_type,city):
     """Displays statistics on bikeshare users."""
 
@@ -349,6 +349,8 @@ def user_stats(df,filter_type,city):
         oldest = df['Birth Year'].max()
         popular_birth_year = df['Birth Year'].mode()[0]
 
+"""Displays Age statistics on bikeshare users."""
+
         print('\n\nCalculating Age Stats...')
         print('-'*60)
         print('\tWhat is the breakdown of Birth Year filtered by: {}?.'.format(filter_type))
@@ -361,7 +363,7 @@ def user_stats(df,filter_type,city):
 
 def raw_data(df,filter_type,city):
     """Displays bikeshare raw data."""
-    
+
     response=input('Do you want to see raw data enter yes or no \n').lower()
     head=0
     while response=='yes':
@@ -375,7 +377,7 @@ def raw_data(df,filter_type,city):
         response=input('Do you want to see next 5 raw data enter yes or no\n').lower()
 
 
-    
+
 def main():
 
     while True:
@@ -400,4 +402,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
