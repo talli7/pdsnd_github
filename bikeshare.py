@@ -235,7 +235,8 @@ def time_stats(df, filter_type):
         print('\tWhat is the most popular month for travelling?')
 
         print('\tThe most popular month is : {} : Filtered by {}'.format(popular_day_of_the_month,filter_type))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
         #if filter_type==''
@@ -250,7 +251,8 @@ def time_stats(df, filter_type):
         print('-'*60)
         print('\n\tWhat is the most popular day for travelling?')
         print('\tThe most popular day is : {} : Filtered by {}'.format(popular_day_of_the_week,filter_type))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
         # display the most common start hour
@@ -265,7 +267,8 @@ def time_stats(df, filter_type):
         print('-'*60)
         print('\n\tWhat is the most popular hour for traveling?')
         print('\tThe most popular hour is : {} : Filtered by {}'.format(popular_hour,filter_type))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
     except IndexError:
         print('Weekday doesn''t exist')
@@ -286,7 +289,8 @@ def station_stats(df,filter_type):
 
         print('\tWhat is the most popular start and end stations respectively filtered by: {}?.'.format(filter_type))
         print("\t('{}','{}')".format(popular_start_station,popular_end_station))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
 
 
 
@@ -297,7 +301,8 @@ def station_stats(df,filter_type):
         print('\n\tWhat is the most popular start station and end station trip filtered by: {}?.'.format(filter_type))
         print('\tStart Station \t\t\t\tEnd Station')
         print('\t{}\t\t{}\t\t{}'.format(popular_trip[0],popular_trip[1],popular_trip_count))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
     except IndexError:
         print('Weekday doesn''t exist')
@@ -316,8 +321,8 @@ def trip_duration_stats(df,filter_type):
     count_duration = df['Trip Duration'].count()
     print('\tTotal Duration: {}, Count:{}, Avg Duration: {}'.format(sum_duration, count_duration ,average_duration))
     # display mean travel time
-
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    end_time =time.time() - start_time
+    print("\nThis took {} seconds.".format(end_time))
     print('-'*60)
 
 
@@ -337,7 +342,8 @@ def user_stats(df,filter_type,city):
         print(gender_details)
 
 
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
      # Display youngest, oldest and most available year
@@ -358,7 +364,8 @@ def user_stats(df,filter_type,city):
         print('\tThe oldest Birth Year: {}'.format(oldest))
         print('\tThe Popular Birth Year: {}'.format(popular_birth_year))
 
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
 def raw_data(df,filter_type,city):
