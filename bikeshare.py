@@ -28,7 +28,7 @@ def get_filters(restarting):
     month=''
     day=''
     filter_type=''
-    
+
     print('Hello! Let\'s explore some US bikeshare data!')
     city=input('Will you like to see data for Chicago, New York City, or Washington? \n').lower()
     #filter_type=input('Will you like to filter the data by month, day, both, or not all? Type "none" for no time filter. \n')
@@ -52,7 +52,7 @@ def get_filters(restarting):
 
     correct=False
     i=0
-    
+
     while correct == False and restarting==False:
         i=i+1
         filter_type=input('Will you like to filter the data by month, day, both, or not all? Type "none" for no time filter. \n').title()
@@ -68,7 +68,7 @@ def get_filters(restarting):
         elif filter_type in filter_list.keys():
             correct = True
 
-            
+
     if filter_type == 'Month' and restarting==False:
         correct=False
         i=0
@@ -86,8 +86,8 @@ def get_filters(restarting):
             elif month_name in month_list.keys():
                 correct = True
 
-     
-    try:        
+
+    try:
         if filter_type == 'Day' and restarting==False:
             correct=False
             i=0
@@ -111,10 +111,10 @@ def get_filters(restarting):
         restarting=True
         print ('Wrong Data entered Restarting the program. Please type your response as an integer (e.g. 1=Sunday) \n')
 
-                
-                
-                
-    try:            
+
+
+
+    try:
         if filter_type == 'Both' and restarting==False:
             correct=False
             i=0
@@ -135,7 +135,7 @@ def get_filters(restarting):
                     correct = True
 
 
-            if filter_type == 'Both' and restarting==False:        
+            if filter_type == 'Both' and restarting==False:
                 correct=False
                 i=0
                 month_name=input('Which month January, February, March, April, May, or June? \n').title()
@@ -156,9 +156,9 @@ def get_filters(restarting):
 
         restarting=True
         print ('Wrong Data entered Restarting the program. Please type your response as an integer (e.g. 1=Sunday) \n')
-    
+
     if filter_type == 'none' and restarting==False:
-       print('Filter Type none selected')     
+       print('Filter Type none selected')
 
 
     return city, month, day,filter_type,restarting
@@ -194,7 +194,7 @@ def load_data(city, month, day,filter_type):
 
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
-        
+
         # filter by day of week if applicable
     elif filter_type == 'day':
         # use the index of the months list to get the corresponding int
@@ -207,11 +207,11 @@ def load_data(city, month, day,filter_type):
         df = df[df['month'] == month]
         df = df[df['day_of_week'] == day]
         # filter by day of week if applicable
-        
+
     elif filter_type == 'none':
         # filter by day of week to create the new dataframe
         df = df
-       
+
     return df
 
 
@@ -235,7 +235,8 @@ def time_stats(df, filter_type):
         print('\tWhat is the most popular month for travelling?')
 
         print('\tThe most popular month is : {} : Filtered by {}'.format(popular_day_of_the_month,filter_type))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
         #if filter_type==''
@@ -250,7 +251,8 @@ def time_stats(df, filter_type):
         print('-'*60)
         print('\n\tWhat is the most popular day for travelling?')
         print('\tThe most popular day is : {} : Filtered by {}'.format(popular_day_of_the_week,filter_type))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
         # display the most common start hour
@@ -265,7 +267,8 @@ def time_stats(df, filter_type):
         print('-'*60)
         print('\n\tWhat is the most popular hour for traveling?')
         print('\tThe most popular hour is : {} : Filtered by {}'.format(popular_hour,filter_type))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
     except IndexError:
         print('Weekday doesn''t exist')
@@ -286,7 +289,8 @@ def station_stats(df,filter_type):
 
         print('\tWhat is the most popular start and end stations respectively filtered by: {}?.'.format(filter_type))
         print("\t('{}','{}')".format(popular_start_station,popular_end_station))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
 
 
 
@@ -297,7 +301,8 @@ def station_stats(df,filter_type):
         print('\n\tWhat is the most popular start station and end station trip filtered by: {}?.'.format(filter_type))
         print('\tStart Station \t\t\t\tEnd Station')
         print('\t{}\t\t{}\t\t{}'.format(popular_trip[0],popular_trip[1],popular_trip_count))
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
     except IndexError:
         print('Weekday doesn''t exist')
@@ -310,17 +315,17 @@ def trip_duration_stats(df,filter_type):
     start_time = time.time()
 
     # display total travel time
- 
+
     sum_duration = df['Trip Duration'].sum()
     average_duration = df['Trip Duration'].mean()
     count_duration = df['Trip Duration'].count()
     print('\tTotal Duration: {}, Count:{}, Avg Duration: {}'.format(sum_duration, count_duration ,average_duration))
     # display mean travel time
-
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    end_time =time.time() - start_time
+    print("\nThis took {} seconds.".format(end_time))
     print('-'*60)
 
-    
+
 def user_stats(df,filter_type,city):
     """Displays statistics on bikeshare users."""
 
@@ -337,7 +342,8 @@ def user_stats(df,filter_type,city):
         print(gender_details)
 
 
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
      # Display youngest, oldest and most available year
@@ -356,12 +362,13 @@ def user_stats(df,filter_type,city):
         print('\tThe oldest Birth Year: {}'.format(oldest))
         print('\tThe Popular Birth Year: {}'.format(popular_birth_year))
 
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        end_time =time.time() - start_time
+        print("\nThis took {} seconds.".format(end_time))
         print('-'*60)
 
 def raw_data(df,filter_type,city):
     """Displays bikeshare raw data."""
-    
+
     response=input('Do you want to see raw data enter yes or no \n').lower()
     head=0
     while response=='yes':
@@ -375,7 +382,7 @@ def raw_data(df,filter_type,city):
         response=input('Do you want to see next 5 raw data enter yes or no\n').lower()
 
 
-    
+
 def main():
 
     while True:
@@ -400,4 +407,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
