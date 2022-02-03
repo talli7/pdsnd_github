@@ -1,17 +1,46 @@
->**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
 
 ### Date created
-Include the date you created this project and README file.
+This project was created on 1st of February 2022.
 
 ### Project Title
-Replace the Project Title
+Bikeshare Usage Statistics
 
 ### Description
-Describe what your project is about and what it does
+The code computed the statistics of the bike share use in Chicago, New York City, and Washington by computing a variety of descriptive statistics. In this project contain the following information:
+
+##### 1 Popular times of travel (i.e., occurs most often in the start time)
+
+Most common month
+Most common day of week
+Most common hour of day
+
+#### 2 Popular stations and trip
+
+Most common start station
+Most common end station
+Most common trip from start to end (i.e., most frequent combination of start station and end station)
+
+#### 3 Trip duration
+
+Total travel time
+average travel time
+
+#### 4 User info
+
+Counts of each user type
+Counts of each gender (only available for NYC and Chicago)
+Earliest, most recent, most common year of birth (only available for NYC and Chicago)
 
 ### Files used
-Include the files used
+1. chicago.csv
+2. new_york_city.csv
+3. washington.csv
+4. bikeshare.py
+
+### Log of updates and revisions.
+
+1. Added a new variable end_time to store the execution end time on 03/02/2022 .
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+https://www.python.org/
+https://www.w3schools.com/python/pandas/pandas_csv.asp
